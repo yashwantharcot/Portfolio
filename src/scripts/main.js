@@ -36,6 +36,20 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Please fill in all fields.');
         }
     });
+
+    const toggleButton = document.querySelector("#dark-mode-toggle");
+    toggleButton.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+    });
+
+    document.querySelector("#contact-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        emailjs.sendForm('service_id', 'template_id', this)
+          .then(() => alert("Message sent successfully!"))
+          .catch(() => alert("Failed to send message."));
+    });
+
+    AOS.init();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
